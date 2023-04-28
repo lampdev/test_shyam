@@ -7,16 +7,19 @@
 2. Navigate to project folder
 
 
-3. Run: ```composer install```
+3. ```cp .env.example .env```
 
 
-4. Run: ```npm install```
+4. Run: ```composer install```
 
 
-4. Run: ```php artisan migrate```
+5. Run: ```npm install```
 
 
-6. Run database seeders:
+6. Run: ```php artisan migrate```
+
+
+7. Run database seeders:
 ```
 php artisan db:seed
 ```
