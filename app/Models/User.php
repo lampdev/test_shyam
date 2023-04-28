@@ -7,10 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Plank\Metable\Metable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Metable;
+
+    const GENDER_MALE = 'male';
+
+    const GENDER_FEMALE = 'female';
+
+    const GENDERS = [self::GENDER_MALE, self::GENDER_FEMALE];
 
     /**
      * The attributes that are mass assignable.

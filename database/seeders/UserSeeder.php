@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -13,6 +15,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        $faker = app(Faker::class);
+        $users = User::factory(10)->create();
+
+        $users->each(function (User $user) use ($faker) {
+            $user->setManyMeta([
+                'age' => $faker->numberBetween(18, 65),
+                'gender' => $faker->randomElement(User::GENDERS),
+                'address' => $faker->address(),
+            ]);
+        });
     }
 }
