@@ -16,14 +16,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = app(Faker::class);
-        $users = User::factory(10)->create();
 
-        $users->each(function (User $user) use ($faker) {
-            $user->setManyMeta([
-                'age' => $faker->numberBetween(18, 65),
-                'gender' => $faker->randomElement(User::GENDERS),
-                'address' => $faker->address(),
-            ]);
-        });
+        User::factory(10)
+            ->create()
+            ->each(function (User $user) use ($faker) {
+                $user->setManyMeta([
+                    'age' => $faker->numberBetween(18, 65),
+                    'gender' => $faker->randomElement(User::GENDERS),
+                    'address' => $faker->address(),
+                ]);
+            });
     }
 }
