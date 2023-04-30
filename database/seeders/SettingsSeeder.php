@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use anlutro\LaravelSettings\Facades\Setting;
-use Faker\Generator;
+use App\Models\Settings;
 use Illuminate\Database\Seeder;
 
 class SettingsSeeder extends Seeder
@@ -15,18 +14,6 @@ class SettingsSeeder extends Seeder
      */
     public function run()
     {
-        $faker = app(Generator::class);
-
-        collect()->times(
-            $faker->numberBetween(3, 7),
-            function () use ($faker) {
-                return Setting::set(
-                    $faker->unique()->word(),
-                    $faker->sentence()
-                );
-            }
-        );
-
-        Setting::save();
+        Settings::factory()->count(5)->create();
     }
 }
