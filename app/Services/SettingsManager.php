@@ -15,7 +15,7 @@ class SettingsManager extends BaseSettingsManager
 
     public function getByTenant($key, $tenantId, $default = null)
     {
-        Setting::setExctraColumns(['tenant_id' => $tenantId]);
+        Setting::setExtraColumns(['tenant_id' => $tenantId]);
 
         return Setting::get($key, $default);
     }
